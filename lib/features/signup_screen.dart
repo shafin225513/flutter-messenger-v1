@@ -24,18 +24,22 @@ class SignUpNotifier extends StateNotifier<AsyncValue<void>> {
       try {
         final response = await supabase.auth.signUp(
           email: email.trim(),
+          
           password: password,
         );
+
+        
 
         if (response.user == null) {
           throw Exception('Sign up failed');
         }
 
-        await supabase.from('profiles').insert({
-          'id': response.user!.id,
-          'email': response.user!.email,
-          'username': username.trim(),
-        });
+        await supabase
+         .from('profiles')
+         .update({
+         'username': username.trim(),
+         })
+        .eq('id', response.user!.id);
 
         onSuccess();
       } catch (e, stackTrace) {

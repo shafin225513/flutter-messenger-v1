@@ -37,7 +37,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       if (mounted) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (_) => const ContactListScreen()),
+          MaterialPageRoute(builder: (_) =>  ContactListScreen()),
         );
       }
     } on AuthException catch (e) {
