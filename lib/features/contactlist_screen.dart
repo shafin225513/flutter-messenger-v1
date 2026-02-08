@@ -1,10 +1,14 @@
 import 'package:e_commerce_2/features/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/legacy.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:e_commerce_2/features/chat_screen.dart';
 
 // Provider to fetch all users (contacts) + their conversation info
+final chatSearchProvider = StateProvider<String>((ref) => '');
+
+
 final contactsProvider =
     FutureProvider.autoDispose<List<Map<String, dynamic>>>((ref) async {
   final supabase = ref.read(supabaseProvider);
@@ -100,18 +104,42 @@ class ContactListScreen extends ConsumerWidget {
     final currentUser = supabase.auth.currentUser;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Contacts')),
+      appBar: AppBar(
+        title: TextField(
+        decoration: const InputDecoration(
+        hintText: 'Search chats...',
+        border: InputBorder.none,
+        ),
+        onChanged: (value) {
+        ref.read(chatSearchProvider.notifier).state = value;
+        },
+       ),
+      ),
+
       body: contactsAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (err, _) => Center(child: Text('Error: $err')),
         data: (contacts) {
           if (contacts.isEmpty) return const Center(child: Text('No contacts found.'));
 
+          final query = ref.watch(chatSearchProvider).toLowerCase();
+
+         final filteredChats = contacts.where((chat) {
+         final username = (chat['username'] as String?)?.toLowerCase()??' ';
+         return username.contains(query);
+         }).toList();
+
+         if (filteredChats.isEmpty) {
+            return const Center(child: Text('No matching chats'));
+         }
+
+
           return ListView.builder(
-            itemCount: contacts.length,
+            itemCount: filteredChats.length,
             itemBuilder: (context, index) {
+              final chat = filteredChats[index];
               final contact = contacts[index];
-              final username = contact['username'] as String;
+              final username = chat['username'] as String;
               final lastMsg = contact['last_message_at'] as String?;
 
               return ListTile(
