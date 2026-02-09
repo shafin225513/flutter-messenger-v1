@@ -1,5 +1,6 @@
 
-import 'package:e_commerce_2/features/signup_screen.dart';
+//import 'package:e_commerce_2/features/signup_screen.dart';
+import 'package:e_commerce_2/features/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: SignUpScreen(), // Corrected line
+      home: AppEntry(), // Corrected line
     );
   }
 }

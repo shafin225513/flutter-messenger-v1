@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "625963332142",
+    "project_id": "supabase-messenger",
+    "storage_bucket": "supabase-messenger.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625963332142:android:a03f97a78b26c9565965bf",
+        "android_client_info": {
+          "package_name": "com.example.e_commerce_2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5J80cwkMbrS7TosgV0xOdkJfwLbHSS_A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
