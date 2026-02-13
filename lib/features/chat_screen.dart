@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 
-// ------------------- Message Model -------------------
+
 class Message {
   final String id;
   final String content;
@@ -31,10 +31,10 @@ class Message {
   }
 }
 
-// ------------------- Scroll Controller -------------------
+
 final scrollController = ScrollController();
 
-// ------------------- Delete Function -------------------
+
 Future<void> deleteMessageForEveryone(
   SupabaseClient supabase,
   String messageId,
@@ -42,7 +42,7 @@ Future<void> deleteMessageForEveryone(
   await supabase.from('messages').delete().eq('id', messageId);
 }
 
-// ------------------- Messages Provider -------------------
+
 final messagesProvider =
     FutureProvider.family<List<Message>, String>((ref, conversationId) async {
   final supabase = ref.read(supabaseProvider);
@@ -56,7 +56,7 @@ final messagesProvider =
   return data.map<Message>((e) => Message.fromMap(e)).toList();
 });
 
-// ------------------- Chat Screen -------------------
+
 class ChatScreen extends ConsumerWidget {
   final String conversationId;
   const ChatScreen({super.key, required this.conversationId});
@@ -176,7 +176,7 @@ class ChatScreen extends ConsumerWidget {
   }
 }
 
-// ------------------- Message Input -------------------
+
 class _MessageInput extends ConsumerStatefulWidget {
   final String conversationId;
   const _MessageInput({required this.conversationId});
