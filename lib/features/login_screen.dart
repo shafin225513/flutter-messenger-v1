@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/legacy.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:e_commerce_2/features/contactlist_screen.dart';
 
-// Providers (UNCHANGED)
+
 final supabaseProvider =
     Provider<SupabaseClient>((ref) => Supabase.instance.client);
 
@@ -124,7 +124,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               ),
               const SizedBox(height: 32),
 
-              // -------- Email --------
+              
               _InputField(
                 controller: _emailController,
                 hint: 'Email',
@@ -133,7 +133,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               ),
               const SizedBox(height: 16),
 
-              // -------- Password --------
+              
               _InputField(
                 controller: _passwordController,
                 hint: 'Password',
@@ -142,7 +142,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               ),
               const SizedBox(height: 28),
 
-              // -------- Button --------
+              
               SizedBox(
                 height: 48,
                 child: _loading
@@ -169,7 +169,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   }
 }
 
-// ------------------- Reusable Input -------------------
+
 class _InputField extends StatelessWidget {
   final TextEditingController controller;
   final String hint;
