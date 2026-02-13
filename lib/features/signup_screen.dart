@@ -4,11 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-// ---------------- Providers (UNCHANGED) ----------------
+
 final supabaseProvider =
     Provider<SupabaseClient>((ref) => Supabase.instance.client);
 
-// ---------------- SignUp Notifier (UNCHANGED) ----------------
+
 class SignUpNotifier extends StateNotifier<AsyncValue<void>> {
   final SupabaseClient supabase;
   SignUpNotifier(this.supabase) : super(const AsyncValue.data(null));
@@ -45,13 +45,13 @@ class SignUpNotifier extends StateNotifier<AsyncValue<void>> {
   }
 }
 
-// ---------------- Provider (UNCHANGED) ----------------
+
 final signUpProvider =
     StateNotifierProvider<SignUpNotifier, AsyncValue<void>>((ref) {
   return SignUpNotifier(ref.watch(supabaseProvider));
 });
 
-// ---------------- UI ----------------
+
 class SignUpScreen extends ConsumerStatefulWidget {
   const SignUpScreen({super.key});
 
@@ -96,7 +96,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // -------- Icon / Title --------
+              
               const Icon(
                 Icons.person_add_alt_1_rounded,
                 size: 64,
@@ -119,7 +119,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
               ),
               const SizedBox(height: 32),
 
-              // -------- Email --------
+              
               _InputField(
                 controller: _emailController,
                 hint: 'Email',
@@ -128,7 +128,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
               ),
               const SizedBox(height: 16),
 
-              // -------- Username --------
+              
               _InputField(
                 controller: _usernameController,
                 hint: 'Username',
@@ -136,7 +136,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
               ),
               const SizedBox(height: 16),
 
-              // -------- Password --------
+              
               _InputField(
                 controller: _passwordController,
                 hint: 'Password',
@@ -145,7 +145,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
               ),
               const SizedBox(height: 28),
 
-              // -------- Sign Up Button --------
+              
               SizedBox(
                 height: 48,
                 child: isLoading
@@ -180,7 +180,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
               ),
               const SizedBox(height: 16),
 
-              // -------- Login Redirect --------
+              
               TextButton(
                 onPressed: () {
                   Navigator.push(
@@ -203,7 +203,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
   }
 }
 
-// ---------------- Reusable Input ----------------
+
 class _InputField extends StatelessWidget {
   final TextEditingController controller;
   final String hint;
