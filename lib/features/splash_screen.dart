@@ -76,6 +76,6 @@ class AppEntry extends ConsumerWidget {
       return const SplashScreen();
     }
 
-    return const SignUpScreen(); // or AuthGate later
+    return const SignUpScreen(); 
   }
 }
