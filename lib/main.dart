@@ -12,7 +12,7 @@ void main() async {
     anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdlaHNta2dubGlweW5nbnFoc2thIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAzMDYxNjAsImV4cCI6MjA4NTg4MjE2MH0.ro8V3QBVcUNvKizMKNNybvsSWmmhLkO2eaEpps_wSQQ',
   );
    runApp(
-    const ProviderScope( // <- THIS
+    const ProviderScope( 
       child: MyApp(),
     ),
   );
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: AppEntry(), // Corrected line
+      home: AppEntry(), 
     );
   }
 }
