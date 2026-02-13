@@ -99,7 +99,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // -------- Logo / Title --------
+              
               const Icon(
                 Icons.chat_bubble_rounded,
                 size: 64,
